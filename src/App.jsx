@@ -9,26 +9,29 @@ export default function App() {
         }));
     }
 
+    const addChirps = (username, thoughts) => {
+        let sno;
+        if(chirps.length === 0){
+            sno  = 0;
+        }
+        else{
+            sno = chirps[chirps.length - 1].sno + 1;
+        }
+        
+        const myChirp = {
+            sno: sno,
+            username: username,
+            thoughts: thoughts
+        }
+
+        console.log(myChirp);
+        setChirps([...chirps, myChirp]);
+    }
+
     const[chirps, setChirps] = useState(
         
         [
-            {
-                sno: 1,
-                username: 'gswal25',
-                thoughts: "all is well"
-            },
-    
-            {   
-                sno: 2,
-                username: "pswal89",
-                thoughts: "god is great"
-            },
-    
-            {   
-                sno: 3,
-                username: "nswal45",
-                thoughts: "nothing is possible"
-            }
+   
         ]
     );
   
@@ -37,7 +40,7 @@ export default function App() {
        <>
             <div className="container-sm mx-auto">
                 <div id="form">
-                    <Form/>
+                    <Form addChirps={addChirps}/>
                 </div>
 
                 <div id="chirp">

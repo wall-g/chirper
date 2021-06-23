@@ -4,8 +4,13 @@ export default function Form(props) {
     const [username, setUsername] = useState("");
     const [thoughts, setThoughts] = useState("");
 
-    const submit = () => {
+    const submit = (e) => {
+        e.preventDefault();
+        if(!username || !thoughts){
+            alert('username or thoughts cannot be blank');
+        }
 
+        props.addChirps(username, thoughts);
     }
 
     return (
